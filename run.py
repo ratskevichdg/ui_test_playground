@@ -6,6 +6,7 @@ from tests.test_client_side_delay import ClientSideDelay
 from tests.test_click import ClickData
 from tests.test_text_input import TextInputPage
 from tests.test_scrollbars import Scrollbars
+from tests.test_verify_text import VerifyText
 
 import unittest
 from unittest import TestSuite
@@ -20,7 +21,8 @@ def load_tests(loader, tests, pattern):
         ClientSideDelay,
         ClickData,
         TextInputPage,
-        Scrollbars
+        Scrollbars, 
+        VerifyText
     ):
         tests = loader.loadTestsFromTestCase(test_class)
         suite.addTests(tests)
