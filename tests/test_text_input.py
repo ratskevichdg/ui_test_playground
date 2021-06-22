@@ -2,26 +2,19 @@ import sys
 import os.path
 libdir = os.path.dirname(__file__)
 sys.path.append(os.path.split(libdir)[0])  
-
-from time import sleep
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+from base_test_class import BaseTestClass
 import unittest
+from time import sleep
 
 from page_objects.text_input_page import TextInputPage
 
-class ClickData(unittest.TestCase):
+class ClickData(BaseTestClass):
 
-    _multiprocess_can_split_ = True
-    
-    def setUp(self):
-        self.driver = webdriver.Chrome(ChromeDriverManager().install())
-        self.driver.implicitly_wait(30)
-        self.base_url = "http://uitestingplayground.com/textinput"
+    BASE_URL = "http://uitestingplayground.com/textinput"
 
     def test_text_input_with_empty_string(self):
         driver = self.driver
-        driver.get(self.base_url)
+        driver.get(self.BASE_URL)
         text_input_page = TextInputPage(driver)
         initial_button_text = text_input_page.get_button_text()
         text_input_page.click_the_button()
@@ -33,7 +26,7 @@ class ClickData(unittest.TestCase):
     
     def test_text_input_with_random_string(self):
         driver = self.driver
-        driver.get(self.base_url)
+        driver.get(self.BASE_URL)
         text_input_page = TextInputPage(driver)
         text_to_enter = text_input_page.random_string()
         text_input_page.enter_text(text_to_enter)
@@ -44,10 +37,6 @@ class ClickData(unittest.TestCase):
         self.assertEqual(
             text_to_enter, button_text_after_click
         ), "Button text was changed"
-
-
-    def tearDown(self):
-        self.driver.quit()
 
 if __name__ == "__main__":
     unittest.main()
