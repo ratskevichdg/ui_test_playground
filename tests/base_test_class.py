@@ -33,7 +33,7 @@ class BaseTestClass(unittest.TestCase):
         self.options.add_argument("--headless")
         self.options.add_argument("--no-sandbox")
         self.driver = webdriver.Chrome(
-            executable_path=self.DRIVER_LOCATION,
+            executable_path="/usr/bin/chromedriver",
             chrome_options=self.options
         ) 
         self.driver.implicitly_wait(16)
