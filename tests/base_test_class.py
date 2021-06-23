@@ -28,11 +28,13 @@ class BaseTestClass(unittest.TestCase):
         #     command_executor="http://localhost:4444/wd/hub",
         #     desired_capabilities=capabilities
         # )
-        # self.options = webdriver.ChromeOptions() 
+        self.options = webdriver.ChromeOptions() 
         self.options.binary_location = self.BINARY_LOCATION 
+        self.options.add_argument("--headless")
+        self.options.add_argument("--no-sandbox")
         self.driver = webdriver.Chrome(
             executable_path=self.DRIVER_LOCATION,
-            options=self.options
+            chrome_options=self.options
         ) 
         self.driver.implicitly_wait(16)
 
