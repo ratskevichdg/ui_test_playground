@@ -28,7 +28,7 @@ class BaseTestClass(unittest.TestCase):
         #     command_executor="http://localhost:4444/wd/hub",
         #     desired_capabilities=capabilities
         # )
-        self.options = webdriver.ChromeOptions() 
+        # self.options = webdriver.ChromeOptions() 
         self.options.binary_location = self.BINARY_LOCATION 
         self.driver = webdriver.Chrome(
             executable_path=self.DRIVER_LOCATION,
