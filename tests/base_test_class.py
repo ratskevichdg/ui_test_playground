@@ -1,6 +1,6 @@
 import unittest
 from selenium import webdriver
-# from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 
 from selenium import webdriver
         
@@ -23,7 +23,7 @@ class BaseTestClass(unittest.TestCase):
     BINARY_LOCATION = "/usr/bin/google-chrome"
 
     def setUp(self):
-        # self.driver = webdriver.Chrome(ChromeDriverManager().install())
+        
         # self.driver = webdriver.Remote(
         #     command_executor="http://localhost:4444/wd/hub",
         #     desired_capabilities=capabilities
@@ -32,10 +32,14 @@ class BaseTestClass(unittest.TestCase):
         self.options.binary_location = self.BINARY_LOCATION 
         self.options.add_argument("--headless")
         self.options.add_argument("--no-sandbox")
+        # self.driver = webdriver.Chrome(
+        #     executable_path="/usr/local/bin/chromedriver",
+        #     chrome_options=self.options
+        # ) 
         self.driver = webdriver.Chrome(
-            executable_path="/usr/local/bin/chromedriver",
+            ChromeDriverManager().install(),
             chrome_options=self.options
-        ) 
+        )
         self.driver.implicitly_wait(16)
 
 
