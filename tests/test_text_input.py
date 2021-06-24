@@ -4,6 +4,7 @@ libdir = os.path.dirname(__file__)
 sys.path.append(os.path.split(libdir)[0])  
 from base_test_class import BaseTestClass
 import unittest
+import allure
 from time import sleep
 
 from page_objects.text_input_page import TextInputPage
@@ -12,6 +13,9 @@ class ClickData(BaseTestClass):
 
     BASE_URL = "http://uitestingplayground.com/textinput"
 
+    @allure.feature("Entering text into an edit field may not have effect")
+    @allure.story("Record empty text into the input field and pressing the button.")
+    @allure.severity("normal")
     def test_text_input_with_empty_string(self):
         driver = self.driver
         driver.get(self.BASE_URL)
@@ -23,7 +27,9 @@ class ClickData(BaseTestClass):
             initial_button_text, button_text_after_click
         ), "Button text was changed"
 
-    
+    @allure.feature("Entering text into an edit field may not have effect")
+    @allure.story("Record setting text into the input field and pressing the button.")
+    @allure.severity("normal")
     def test_text_input_with_random_string(self):
         driver = self.driver
         driver.get(self.BASE_URL)

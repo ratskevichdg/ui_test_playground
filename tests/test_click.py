@@ -1,17 +1,23 @@
 import sys
 import os.path
+
 libdir = os.path.dirname(__file__)
-sys.path.append(os.path.split(libdir)[0])  
+sys.path.append(os.path.split(libdir)[0])
 from base_test_class import BaseTestClass
 from time import sleep
 import unittest
+import allure
 
 from page_objects.click_page import ClickPage
+
 
 class ClickData(BaseTestClass):
 
     BASE_URL = "http://uitestingplayground.com/click"
 
+    @allure.feature("Event based click on an element may not always work")
+    @allure.story("Record button click. The button becomes green after clicking")
+    @allure.severity("normal")
     def test_button_colors(self):
         driver = self.driver
         driver.get(self.BASE_URL)

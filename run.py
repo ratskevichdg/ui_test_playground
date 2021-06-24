@@ -15,14 +15,14 @@ def load_tests(loader, tests, pattern):
     suite = TestSuite()
     for test_class in (
         ClassAttribute,
-        HiddenLayer,
-        LoadDelay,
-        AJAXData,
-        ClientSideDelay,
-        ClickData,
-        TextInputPage,
-        Scrollbars, 
-        VerifyText
+        # HiddenLayer,
+        # LoadDelay,
+        # AJAXData,
+        # ClientSideDelay,
+        # ClickData,
+        # TextInputPage,
+        # Scrollbars, 
+        # VerifyText
     ):
         tests = loader.loadTestsFromTestCase(test_class)
         suite.addTests(tests)
